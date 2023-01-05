@@ -13,6 +13,16 @@ export default defineConfig({
       "~":path.resolve(__dirname,"src")
     }
   },
+  server:{
+    proxy:{
+      '/api': {
+        target: 'http://shopapi.2yuecloud.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    
+    }
+  },
   plugins: [
     vue(),
     WindiCSS(),
